@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 
-// const fileStorage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, "images");
+
 //     },
 //     filename: (req, file, cb) => {
 //         cb(null, new Date.now().toISOString() + "-" + file.originalname);
@@ -38,24 +36,6 @@ const Product = require('./router/product');
 app.use(UserAdmin);
 app.use(Admin);
 app.use(Product);
-
-// app.use(UserAuth);
-
-
-
-// app.use((err, req, res, next) => {
-//     if (err instanceof multer.MulterError) { // Multer-specific errors
-//         return res.status(418).json({
-//             err_code: err.code,
-//             err_message: err.message,
-//         });
-//     } else { // Handling errors for any other cases from whole application
-//         return res.status(500).json({
-//             err_code: 409,
-//             err_message: "Something went wrong!"
-//         });
-//     }
-// });
 
 
 mongoose.connect("mongodb+srv://ashrafhussein8692:YDju4HFVatEhMzeu@cluster0.ae85bui.mongodb.net/shop?retryWrites=true&w=majority")
