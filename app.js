@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const express = require('express');
-// const multer = require('multer')
- 
+
 // const fileStorage = multer.diskStorage({
 //     destination: (req, file, cb) => {
 //         cb(null, "images");
@@ -22,29 +21,20 @@ const express = require('express');
 //         cb(null, false);
 //     }
 // };
-
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
 require('dotenv').config({ path: './config.env' });
 const app = express();
-const upload = require('./middleware/upload')
 app.use(bodyParser.urlencoded({ extended: true }));
-//  app.use(
-//     // upload.array('images'))
-//     multer({ dest: 'images/'}).single('images')
-// );
-
+const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
-
-
 app.use(cors());
 
 const UserAdmin = require('./router/user');
 const Admin = require('./router/admin');
 const Product = require('./router/product');
 
-// const UserAuth = require('./router/auth');
 app.use(UserAdmin);
 app.use(Admin);
 app.use(Product);
@@ -75,7 +65,7 @@ mongoose.connect("mongodb+srv://ashrafhussein8692:YDju4HFVatEhMzeu@cluster0.ae85
         console.log(err)
     })
 
-app.listen(3000, '0.0.0.0', () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log('success')
 
 })
